@@ -86,13 +86,13 @@ def ERK(F, U1, mu, t1, t2, ERK_scheme):
             return dt 
 
     dt = t2 - t1
+    Nv = len(U1)
 
     c, a, b, bs, q, p, s = Butcher_tableau(ERK_scheme)
-
     k = RK_stages(F, U1, mu, t1, t2, s, a, c)
 
-    dU_sol = zeros(len(s))
-    dU_error = zeros(len(s))
+    dU_sol = zeros(Nv)
+    dU_error = zeros(Nv)
     for i in range(s):    
         dU_sol += dt*b[i]*k[i]
         dU_error += dt*bs[i]*k[i]    
@@ -104,12 +104,16 @@ def ERK(F, U1, mu, t1, t2, ERK_scheme):
 
     N = int(dt/dt_max) + 1 # Si dt_max = dt, N = 2
     h = dt/N
-
-    U2 = U1.copy()    
+    t_step = linspace(t1, t2, N+1) # Divido el intervalo [t1, t2] en N puntos
+     
+    dU = zeros(Nv)   
+    U2 = U1.copy()
     for n in range(N):
-        k = RK_stages(F, U2, mu, t1 + h*n, h, s, a, c)
+        k = RK_stages(F, U2, mu, t_step[n], t_step[n+1], s, a, c)
         for i in range(s):    
-            U2 += h*b[i]*k[i]       
+            dU += h*b[i]*k[i]       
+
+        U2 += dU
 
     return U2
 
@@ -121,8 +125,8 @@ def RK_stages(F, U1, mu, t1, t2, s, a, c):
 
     k = zeros((s, Nv))
     for i in range(s):  
-        dU_stage = zeros(len(s))  
-        for j in range(s):
+        dU_stage = zeros(Nv)  
+        for j in range(i): # range(i) porque a[i,j] = 0 para j>i
             dU_stage += dt*a[i,j]*k[j] 
 
         k[i,:] = F(U1 + dU_stage, mu, t1 + c[i]*dt)
@@ -130,14 +134,14 @@ def RK_stages(F, U1, mu, t1, t2, s, a, c):
     return k
     
 
-def GBS(F, U1, mu, t1, t2, Nl):
+def GBS(F, U1, mu, t1, t2, Nl=5):
 
     def modified_midpoint_scheme(F, U1, mu, t1, t2, Ni):
    
         h = (t2 - t1)/(2*Ni)
-        t = linspace(t1, t2, 2*Ni+1)
-
+        t = linspace(t1, t2 + h, 2*Ni+1)
         Nv = len(U1)
+        
         U = zeros((2*Ni+1, Nv))
         U[0,:] = U1
         U[1,:] = U1 + h*F(U1, mu, t1)

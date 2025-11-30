@@ -30,7 +30,7 @@ def Jacobian_CRTBP(mu, V):
     return J
 
 
-def CRTBP_variacional(t, V, mu):
+def CRTBP_variacional(V, mu, t):
     """
     Calcula G(V, mu, t) (ecuación variacional del CRTBP), donde V es el vector 
     con 
@@ -82,7 +82,7 @@ def CRTBP_variacional(t, V, mu):
 
     return G
 
-def CRTBP_variacional_JPL(t, V, mu):
+def CRTBP_variacional_JPL(V, mu, t):
     """
     Calcula G(V, mu, t) (ecuación variacional del CRTBP), donde V es el vector 
     con 
