@@ -1,4 +1,5 @@
-from temporal_schemes import Cauchy_problem, Cauchy_problem_intersect_y, RK4
+from Cauchy import Cauchy_problem, Cauchy_problem_intersect_y
+from temporal_schemes import RK4
 from ordinary_differential_equations import CRTBP_variacional, CRTBP_variacional_JPL
 from numpy import linspace, zeros, identity, reshape, array, sqrt, concatenate, imag, pi
 from numpy.linalg import solve, eigvals

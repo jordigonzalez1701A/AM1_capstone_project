@@ -1,5 +1,8 @@
 from numpy import zeros, sqrt, reshape, dot
+
+
 def Jacobian_CRTBP(mu, V):
+    
     d1 = sqrt((V[0]-mu)**2 + V[1]**2 + V[2]**2)
     d2 = sqrt((V[0]-mu+1)**2 + V[1]**2 + V[2]**2)
     Uxx = 3*(1-mu)*(V[0]-mu)**2/d1**5 - (1-mu)/d1**3 + 3*mu*(V[0]-mu+1)**2/d2**5 - mu/d2**3
@@ -23,7 +26,10 @@ def Jacobian_CRTBP(mu, V):
     J[5,2] = -Uzz
     J[4,3] = -2
     J[3,4] = 2
+
     return J
+
+
 def CRTBP_variacional(t, V, mu):
     """
     Calcula G(V, mu, t) (ecuación variacional del CRTBP), donde V es el vector 
