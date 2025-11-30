@@ -384,8 +384,7 @@ N_family = 5
 
 delta_x0 = 2e-5
 lagrange_point_index = 3
-filename = "C:\\Users\\Usuario\\Documents\\MUSE\\1r\\1r sem\\AM1\\capstone_project\\Lyap_family_Sun_Earth_L1.txt"
-filename_CIs_principales = "C:\\Users\\Usuario\\Documents\\MUSE\\1r\\1r sem\\AM1\\capstone_project\\L1_Sun_Earth_CI.txt"
+
 
 if perform_continuation == True:
     with open(filename, 'w') as f:
