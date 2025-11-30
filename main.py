@@ -4,6 +4,14 @@ from numpy import zeros, identity, reshape, array, sqrt, imag, pi, where, savetx
 from numpy.linalg import solve, eigvals
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+import os
+
+# Folder where THIS script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Build universal paths
+filename = os.path.join(BASE_DIR, "Lyap_family_Sun_Earth_L1.txt")
+filename_CIs_principales = os.path.join(BASE_DIR, "L1_Sun_Earth_CI.txt")
 
 def build_initial_condition(U0):
     """
