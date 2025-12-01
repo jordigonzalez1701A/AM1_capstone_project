@@ -4,24 +4,6 @@ from Butcher import Butcher_tableau
 from Cauchy import Cauchy_problem
 
 
-# def RK4(F, U1, mu, t1, t2, **kwargs):
-#     """
-#     Performs an iteration of Runge-Kutta 4.
-#     F: The function F(U, mu, t) of the problem.
-#     U: The variable U of the Cauchy problem.
-#     mu: Reduced mass.
-#     t1: The initial time of the step.
-#     t2: The final time of the step.
-#     """
-#     dt = t2 - t1
-
-#     k1 = F(U1, mu, t1)
-#     k2 = F(U1 + 1/2*k1*dt, mu, t1 + 1/2*dt)
-#     k3 = F(U1 + 1/2*k2*dt, mu, t1 + 1/2*dt)
-#     k4 = F(U1 + k3*dt, mu, t2)
-
-#     return U1 + dt/6*(k1 + 2*k2 + 2*k3 + k4)  
-
 def RK4(F, U1, mu, t1, t2, **kwargs):
     """
     Performs an iteration of Runge-Kutta 4.
