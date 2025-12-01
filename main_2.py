@@ -5,6 +5,7 @@ from numpy import linspace, zeros, identity, reshape, array, sqrt, concatenate, 
 from numpy.linalg import solve, eigvals, norm, lstsq
 import matplotlib.pyplot as plt
 
+
 def build_initial_condition(U0):
 
     V0 = zeros(6*6+6)
