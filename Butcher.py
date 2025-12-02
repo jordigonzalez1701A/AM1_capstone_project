@@ -1,5 +1,19 @@
 from numpy import array
 
+"""
+===============================================================================
+ Archivo:       Butcher.py
+ Creado:        20/11/2025
+ Descripción:    
+ 
+ Tablas de Butcher para métodos de Runge-Kutta embebidos de alto orden.
+
+ Dependencias:
+    - NumPy
+    
+ Notas:
+===============================================================================
+"""
 
 def Butcher_tableau(method_name):
     """    

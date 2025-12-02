@@ -1,5 +1,18 @@
 from numpy import zeros
 
+"""
+===============================================================================
+ Archivo:       Cauchy.py
+ Creado:        20/11/2025
+ Descripción:    
+ 
+ Funciones para resolver el problema de Cauchy mediante esquemas temporales.
+ Dependencias:
+    - NumPy
+    
+ Notas:
+===============================================================================
+"""
 
 def Cauchy_problem(F, U0, mu, t, temporal_scheme, **kwargs):
     """

@@ -1,8 +1,28 @@
 from numpy import zeros, sqrt, reshape, dot
 
+"""
+===============================================================================
+ Archivo:       ordinary_differential_equations.py
+ Creado:        20/11/2025
+ Descripción:    
+ 
+ Crear representaciones gráficas de la estabilidad y de familias de órbitas de Lyapunov.
 
-def Jacobian_CRTBP(mu, V):
+ Dependencias:
+    - NumPy
     
+ Notas:
+===============================================================================
+"""
+def Jacobian_CRTBP(mu, V):
+    """
+    Calcula el Jacobiano del CRTBP.
+    INPUTS:
+    mu:     Masa reducida del sistema.
+    V:      Vector de estado.
+    OUTPUTS:
+    Matriz Jacobiana 6x6.
+    """
     d1 = sqrt((V[0]-mu)**2 + V[1]**2 + V[2]**2)
     d2 = sqrt((V[0]-mu+1)**2 + V[1]**2 + V[2]**2)
     Uxx = 3*(1-mu)*(V[0]-mu)**2/d1**5 - (1-mu)/d1**3 + 3*mu*(V[0]-mu+1)**2/d2**5 - mu/d2**3
@@ -29,17 +49,18 @@ def Jacobian_CRTBP(mu, V):
 
     return J
 
-
 def CRTBP_variacional(t, V, mu):
     """
     Calcula G(V, mu, t) (ecuación variacional del CRTBP), donde V es el vector 
     con 
 
     Inputs:
-    V: Vector estado del sistema. V=(x,y,z,vx,vy,vz,phi_11,phi_12,...)
+    V:  Vector estado del sistema. V=(x,y,z,vx,vy,vz,phi_11,phi_12,...)
     mu: Masa reducida.
-    t: tiempo adimensional.
-
+    t:  Tiempo adimensional.
+    
+    OUTPUTS:
+    G:  Vector de dimensión 42 
     """
     # CRTBP
     d1 = sqrt((V[0]-mu)**2 + V[1]**2 + V[2]**2)
