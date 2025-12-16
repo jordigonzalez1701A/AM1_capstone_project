@@ -288,9 +288,9 @@ def plot_stability(T, S1, S2):
     fig.suptitle("Análisis de Estabilidad de la Familia de Órbitas", fontsize=14)
     
     # Subplot 1: Re(s1) vs T
-    ax1.plot(T, [s.real for s in s_main], 'o-', color='blue', label=r'$\mathrm{Re}(s_1)$')
+    ax1.plot(T, [abs(s) for s in s_main], 'o-', color='blue', label=r'$|s_1|$')
     ax1.set_xlabel('Periodo $T$')
-    ax1.set_ylabel(r'$\mathrm{Re}(s_1)$')
+    ax1.set_ylabel(r'$|s_1|$')
     ax1.grid(True, alpha=0.3)
     ax1.tick_params(axis='both', which='major', labelsize=10)
     #ax1.xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
@@ -298,9 +298,9 @@ def plot_stability(T, S1, S2):
     ax1.legend()
 
     # Subplot 2: Re(s2) vs T
-    ax2.plot(T, [s.real for s in s_sec], 'o-', color='red', label=r'$\mathrm{Re}(s_2)$')
+    ax2.plot(T, [abs(s) for s in s_sec], 'o-', color='red', label=r'$|s_2|$')
     ax2.set_xlabel('Periodo $T$')
-    ax2.set_ylabel(r'$\mathrm{Re}(s_2)$')
+    ax2.set_ylabel(r'$|s_2|$')
     ax2.grid(True, alpha=0.3)
     ax2.tick_params(axis='both', which='major', labelsize=10)
     #ax1.xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
