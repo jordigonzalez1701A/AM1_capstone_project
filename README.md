@@ -18,4 +18,5 @@ Dependencias:
 
 Para ejecutar este software:
 
-Abrir 'GUI.py', se mostrará la interfaz gráfica de usuario. Rellenar los campos y ejecutar. Aparecerán los resultados automáticamente.
+Abrir 'main.py', se mostrará la interfaz gráfica de usuario. Rellenar los campos y ejecutar. Aparecerán los resultados automáticamente.
+
